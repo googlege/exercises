@@ -1,0 +1,57 @@
+Hotspot detector
+
+There is a triangle mesh in 2D. On this mesh, a scalar function is defined (this can be for example the temperature or stress level).
+The function values are assigned to elements.
+
+Goal: given the mesh and an integer number N, find the first N hotspots,
+that is the elements where the function reaches its local maxima ordered by function value starting from the biggest to the lowest.
+
+Note that the first two hotspots are not the elements with the two first maximum values
+because the element where the second maximum value is achieved will probably be the neighbor element of the first one.
+In this case it would  belong to the first hotspot from the engineering point of view.
+
+The idea is illustrated on the picture below in 1D.
+
+ ^ f
+ |     --
+ |    -  -
+ |   -    -
+ |  -      -  --
+ | -        --  -
+ |-              -
+ -------|------|-------------------------------->
+     first     second                           x
+   hotspot     hotspot
+
+
+Input:
+
+1. A text file with the mesh and the function values. The file contains three sections: NODES, ELEMENTS, and VALUES.
+The syntax is as follows:
+
+-----------------------------------------------------------------------
+NODES
+node_id1, x1, y1
+node_id2, x2, y2
+node_id3, x3, y3
+...
+ELEMENTS
+element_id1, node_id11, node_id12, node_id13
+element_id2, node_id21, node_id22, node_id23
+element_id3, node_id31, node_id32, node_id33
+...
+VALUES
+element_id1, function_value1
+element_id2, function_value2
+element_id3, function_value3
+...
+-----------------------------------------------------------------------
+
+An example of a mesh file is attached.
+
+2. Integer number N that defines how many hostpots must be found and written out
+
+
+Output:
+List of N pairs (hostpot element ID, function value on this element) ordered by value from the biggest to the lowest.
+The exact syntax is unimportant.
